@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js">
+    </script>  
+  </head>
+    <body>
+      
+        <div class="nav">
+            <a href="#idea">Idea</a>
+            <a href="#shop">Gallery</a>
+            <a href="#container">Menu</a>
+        </div>
+        <div class="idea">
+            <h3>Idea</h3>
+            <p class="ideaP">Coffee Tasting Event:
+                Organize a coffee tasting event where participants can explore different types of coffee beans, brewing methods, and flavors. This can be a great way to educate people about the diverse world of coffee.
+                
+                Coffee and Art Fusion:
+                Collaborate with local artists to create a space where people can enjoy their coffee while appreciating art. This could involve displaying artworks, hosting painting sessions, or even organizing a coffee-themed art exhibition.
+                
+                Coffee and Music Nights:
+                Create a cozy atmosphere in a coffee shop or community space with live music. Feature local musicians and bands, and pair their performances with various coffee blends to enhance the sensory experience.
+                
+                Coffee Education Workshops:
+                Offer workshops on coffee brewing techniques, the journey from bean to cup, and the art of latte or cappuccino making. Educating customers about the origin and processing of coffee can deepen their appreciation for the beverage.
+                
+                Coffee and Books Club:
+                Start a coffee and books club where members can discuss literature while sipping on their favorite brew. This could also involve partnering with a local bookstore for a coffee and book pairing event.
+                
+                Coffee and Wellness Classes:
+                Integrate coffee with wellness activities such as yoga or meditation sessions. Highlight the calming effects of coffee and its role in creating mindful moments.
+                
+                DIY Coffee Blending Station:
+                Set up a DIY coffee blending station where customers can create their own custom coffee blends by mixing different types of beans. Encourage them to experiment and find their perfect combination.
+                
+                Coffee and Food Pairing Dinners:
+                Collaborate with local chefs to create a menu that pairs different coffees with various dishes. This could be a special event or a regular feature on the menu.
+                
+                Coffee Roasting Workshops:
+                Offer hands-on workshops on coffee roasting, where participants can learn about the roasting process and even roast their own beans. This adds an interactive and educational element to the coffee experience.
+                
+                Coffee Culture Tours:
+                Organize guided tours of local coffee spots, including coffee farms, roasteries, and unique coffee shops. This can provide participants with insights into the local coffee culture and industry.
+                
+                Remember, the key is to create a unique and engaging experience that goes beyond just serving coffee, tapping into the cultural, artistic, and educational aspects of this beloved beverage.</p>
+        </div>
+        <div class="shop">
+            <h3>Gallery</h3>
+            <script>
+             $(".container").animate({
+              width:"200px",
+              height:"200px"
+             },10000);
+
+              // Load the texture
+    const textureLoader = new THREE.TextureLoader();
+    textureLoader.load(
+    // URL of the image you want to use as texture
+    '1.jpg',
+    function(texture) {
+        // Create the material with the loaded texture
+        const cupBodyMaterial = new THREE.MeshBasicMaterial({ map: texture });
+
+        // Create the body of the cup (cylinder)
+        const cupBodyGeometry = new THREE.CylinderGeometry(1, 0.5, 1, 32);
+        const cupBody = new THREE.Mesh(cupBodyGeometry, cupBodyMaterial);
+        cupBody.position.y = 1.0; // Adjust the position to sit on top of the base
+
+        // Add the cup with image texture to the scene
+        scene.add(cupBody);
+    }
+);
+
+$(function(){
+  
+});
+
+                
+              const scene = new THREE.Scene();
+              const renderer = new THREE.WebGLRenderer();
+              const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+              renderer.setSize(window.innerWidth, window.innerHeight);
+              document.body.appendChild(renderer.domElement);
+
+              // Create the base of the cup (cylinder)
+              const cupBaseGeometry = new THREE.CylinderGeometry(1.5, 1, 0.5, 20);
+              const cupBaseMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+              const cupBase = new THREE.Mesh(cupBaseGeometry, cupBaseMaterial);
+              scene.add(cupBase);
+
+              // Create the body of the cup (cylinder)
+              const cupBodyGeometry = new THREE.CylinderGeometry(1, 0.5, 1, 32);
+              const cupBodyMaterial = new THREE.MeshBasicMaterial({ color: 0xB87333 });
+              const cupBody = new THREE.Mesh(cupBodyGeometry, cupBodyMaterial);
+              cupBody.position.y = 1.0; // Adjust the position to sit on top of the base
+              scene.add(cupBody);
+
+              // Create the handle of the cup (torus)
+              const cupHandleGeometry = new THREE.TorusGeometry(0.3, 0.08, 16, 100);
+              const cupHandleMaterial = new THREE.MeshBasicMaterial({ color: 0xB87333 });
+              const cupHandle = new THREE.Mesh(cupHandleGeometry, cupHandleMaterial);
+              //cupHandle.rotation.x = Math.PI / 2; // Orient the handle properly
+              cupHandle.position.set(1, 1.2, 0); // Adjust the position to be near the top of the cup
+              scene.add(cupHandle);
+
+              camera.position.z = 5;
+
+              function animate() {
+                requestAnimationFrame(animate);
+
+                // Rotate the coffee cup
+                
+
+                renderer.render(scene, camera);
+              }
+
+              animate();
+
+
+          </script>
+        </div>
+        
+        <h3>Menu</h3>
+        <div class="container">
+            <div class="image-container">
+              <img src="latte.jpg" id="img1">
+              <div class="overlay">
+                <p class="caption">Latte</p>
+                <p>A latte or caffè latte is a milk coffee that boasts a silky layer of foam as a real highlight to the drink.</p>
+                <table>
+                  <td>Quantity - </td>
+                  <td>
+                    <select>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                  </td>
+                </table>
+              </div>
+            </div>
+            <div class="image-container">
+              <img src="2.jpg" id="img2">
+              <div class="overlay">
+                <p class="caption">Black Coffee</p>
+                <p>Black coffee is simply coffee with nothing added – no cream, no milk, no sweetener.</p>
+                <table>
+                  <td>Quantity - </td>
+                  <td>
+                    <select>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                  </td>
+                </table>
+              </div>
+            </div>
+            <div class="image-container">
+              <img src="espresso.jpg" id="img3">
+              <div class="overlay">
+                <p class="caption">Espresso</p>
+                <p>Espresso is a concentrated type of 
+                  coffee made with specially roasted beans and an espresso machine.</p>
+                <table>
+                  <td>Quantity - </td>
+                  <td>
+                    <select>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                  </td>
+                </table>
+              </div>
+            </div>
+          </div>
+    </body>
+</html>
